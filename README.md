@@ -1,5 +1,7 @@
 # C10+ PAV-aware evidence tiers for UKB-PPP cis-pQTL credible sets (v1.2)
 
+**Online lookup portal:** https://wcs52113140123-pixel.github.io/c10plus-pqtl-evidence-tiers/
+
 **Paper (in submission):** *Protein-altering variants inflate agreement between affinity proteomics platforms for plasma cis-pQTLs: a pre-registered evaluation against transcript, mass-spectrometry and cross-ancestry evidence*. Jiayao Ni, Wanqiang Zhang, Tao Zhang.
 **Archive DOI:** https://doi.org/10.5281/zenodo.23938291 · **Code:** https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers
 **Licences:** code MIT (`LICENSE`); data and resource CC BY 4.0 (`DATA_LICENSE.md`).
