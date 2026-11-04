@@ -1,7 +1,7 @@
 /* pQTL Evidence Tiers — result page. Vanilla JS, no dependencies; the only request is the local data file. MIT License. */
 (function () {
   'use strict';
-  var DATA_URL = 'data/tiers_v2.2.json';
+  var DATA_URL = 'data/tiers_v2.3.json';
   var PAGE_CARDS = 40;
   var D, E, S, N, META;
   var byStudy, varU, rsMap, studyKeys, symList, symToStudies;
@@ -10,7 +10,7 @@
   var $ = function (id) { return document.getElementById(id); };
 
   var TIER_LABEL = { 1: 'Anchored, no PAV', 2: 'Anchored with PAV, or isoform-only', 3: 'Unresolved: no anchor, no PAV', 4: 'Unanchored, with PAV' };
-  var MS_TEXT = { supported: 'Supported', refuted: 'Refuted', indeterminate_underpowered: 'Indeterminate', indeterminate: 'Indeterminate', not_assessed: 'Not assessed' };
+  var MS_TEXT = { supported: 'Supported', refuted: 'Refuted', indeterminate_underpowered: 'Indeterminate', indeterminate: 'Indeterminate', not_assessed: 'Not assessed', not_evaluable: 'Not evaluable' };
   var MATCH = ['exact', 'prefix', 'contains', 'fuzzy'];
   var BINARY = { anchor_eqtl: 1, anchor_isoform: 1, pav_cognate_cs95_vep116_alltx: 1, pav_cognate_cs95_canonical: 1, pav_lead_variant: 1, rep_sun2018: 1, rep_decode_v4: 1,
     rep_aric_ea: 1, rep_aric_aa: 1, rep_fenland: 1, xa_replicated: 1, flag_concordant_unanchored_PAV: 1, flag_beta_inconsistent: 1 };
@@ -26,7 +26,10 @@
       ['rep_aric_ea', 'ARIC-EA (v4)'], ['dir_aric_ea', 'ARIC-EA direction'], ['rep_aric_aa', 'ARIC-AA (v4)'], ['rep_fenland', 'Fenland (v4)'], ['dir_fenland', 'Fenland direction'],
       ['platform_concordance', 'Platform concordance'], ['flag_concordant_unanchored_PAV', 'Concordant + unanchored + PAV']]],
     ['Mass spectrometry', [['ms_primary', 'MSPA label'], ['ms_mspa_peptide', 'MSPA peptide label'], ['ms_seer_discovery', 'Seer discovery overlap'], ['ms_ext_primary', 'Seer full-statistics label'],
-      ['ms_ext_nominal', 'Seer nominal label'], ['seer_ext_p', 'Seer P'], ['seer_ext_opposite_sig', 'Seer opposite and significant']]],
+      ['ms_ext_nominal', 'Seer nominal label'], ['seer_ext_p', 'Seer P'], ['seer_ext_opposite_sig', 'Seer opposite and significant'],
+      ['ms_gs_primary', 'Generation Scotland label'], ['ms_gs_nominal', 'Generation Scotland nominal label'], ['gs_p', 'Generation Scotland P'], ['gs_opposite_sig', 'Generation Scotland opposite and significant'],
+      ['hb_evaluable', 'HOLBAEK statistics released'], ['ms_hb_primary', 'HOLBAEK label'], ['ms_hb_nominal', 'HOLBAEK nominal label'], ['hb_p', 'HOLBAEK P'], ['hb_opposite_sig', 'HOLBAEK opposite and significant'],
+      ['ms_independent_combined', 'Independent MS layers combined']]],
     ['Cross-ancestry (UKB-PPP)', [['xa_n_ancestries', 'Ancestries'], ['xa_meta_beta_aligned', 'Meta β, aligned'], ['xa_meta_p', 'Meta P'], ['xa_replicated', 'Replicated']]]
   ];
   var EXPORT = ['studyLocusId', 'studyId', 'symbol', 'gene_id', 'uniprot', 'olink_oid', 'chrom', 'lead_variant_id', 'rsIds', 'lead_beta', 'lead_mlog10p',
@@ -34,6 +37,7 @@
     'anchor_isoform', 'h4max_sqtl_tuqtl', 'pav_cognate_cs95_vep116_alltx', 'pav_cognate_cs95_canonical', 'pav_lead_variant', 'pav_pip_sum',
     'rep_sun2018', 'dir_sun2018', 'rep_decode_v4', 'dir_decode_v4', 'rep_aric_ea', 'dir_aric_ea', 'rep_aric_aa', 'rep_fenland', 'dir_fenland',
     'platform_concordance', 'ms_primary', 'ms_mspa_peptide', 'ms_seer_discovery', 'ms_ext_primary', 'ms_ext_nominal', 'seer_ext_p', 'seer_ext_opposite_sig',
+    'ms_gs_primary', 'ms_gs_nominal', 'gs_p', 'gs_opposite_sig', 'hb_evaluable', 'ms_hb_primary', 'ms_hb_nominal', 'hb_p', 'hb_opposite_sig', 'ms_independent_combined',
     'xa_n_ancestries', 'xa_meta_beta_aligned', 'xa_meta_p', 'xa_replicated', 'flag_concordant_unanchored_PAV', 'lead_beta_to_expected_ratio',
     'flag_beta_inconsistent', 'n_other_genes_trans_cs_shared'];
   var STUDY_F = { studyId: 0, symbol: 1, gene_id: 2, uniprot: 3, olink_oid: 4, chrom: 5 };
@@ -238,7 +242,7 @@
   }
   function msRow(name, f, i) {
     var m = ev(f, i);
-    return '<div class="row"><span class="src">' + name + '</span>' + sp(f, m, MS_TEXT[m], m === 'supported' ? 'yes' : (m === 'not_assessed' ? 'na' : 'no')) + '</div>';
+    return '<div class="row"><span class="src">' + name + '</span>' + sp(f, m, MS_TEXT[m], m === 'supported' ? 'yes' : (m === 'not_assessed' || m === 'not_evaluable' ? 'na' : 'no')) + '</div>';
   }
   function card(o) {
     var i = o.i, t = v('tier', i), id = D.studyLocusId[i], rs = D.rsIds[i];
@@ -261,7 +265,8 @@
       '<div class="ev"><span class="k">PAV</span><div class="v">' + pavH + '</div></div>' +
       '<div class="ev"><span class="k">eQTL anchor</span><div class="v">' + ancH + '</div></div>' +
       '<div class="ev"><span class="k">Replication</span>' + repRow('deCODE', 'rep_decode_v4', 'dir_decode_v4', i) + repRow('ARIC-EA', 'rep_aric_ea', 'dir_aric_ea', i) + repRow('Fenland', 'rep_fenland', 'dir_fenland', i) + '</div>' +
-      '<div class="ev"><span class="k">MS support</span>' + msRow('MSPA', 'ms_primary', i) + msRow('Seer', 'ms_ext_primary', i) + '</div>' +
+      '<div class="ev ms"><span class="k">MS support</span>' + msRow('MSPA', 'ms_primary', i) + msRow('Seer', 'ms_ext_primary', i) + msRow('Gen. Scotland', 'ms_gs_primary', i) + msRow('HOLBAEK', 'ms_hb_primary', i) +
+        (st(i)[5] === 'X' ? '<div class="row"><span class="na">chrX: no MS layer releases chrX data</span></div>' : '') + '</div>' +
       '<div class="ev"><span class="k">Flags</span><div class="v">' + (flags.length ? flags.join('') : '<span class="na">None</span>') + '</div></div>' +
       '</div><details class="more"><summary>Details</summary><div class="kv" data-row="' + i + '"></div></details></article>';
   }
