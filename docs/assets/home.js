@@ -5,7 +5,7 @@
   if (!input || !list) return;
   input.addEventListener('focus', function () {
     if (loaded) return; loaded = true;
-    fetch('data/genes_v2.2.json', { credentials: 'omit' })
+    fetch('data/genes_v2.3.json', { credentials: 'omit' })
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (g) { list.innerHTML = g.map(function (x) { return '<option value="' + String(x).replace(/[&<>"']/g, '') + '">'; }).join(''); })
       .catch(function () { /* suggestions are optional */ });
