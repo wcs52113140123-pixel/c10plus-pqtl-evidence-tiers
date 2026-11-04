@@ -282,7 +282,7 @@ def fig4():
         ax.text(i,0.80,f'OR {H3[f"primary.{k}.OR"]:.2f}\nP = {fmt_p(H3[f"primary.{k}.P"])}',ha='center',fontsize=6)
     ax.set_xticks(range(3)); ax.set_xticklabels([f[1] for f in feats]); ax.tick_params(axis='x',pad=10)
     ax.set_ylim(0,0.92); ax.set_ylabel('MS-supported fraction')
-    ax.set_title('Concordance and anchoring do not track MS support',loc='left',fontsize=8)
+    ax.set_title('Seer-study MS labels: concordance and anchoring do not track MS support',loc='left',fontsize=8)
     panel_letter(ax,'a',dx=-0.20)
     SRC['Fig4a']=pd.DataFrame(rows_); SRC['Fig4a']['test']='two-sided Fisher exact; n evaluable = 169 CS (concordance: 144 assayed on SomaScan)'
     # b
@@ -695,7 +695,7 @@ def fig4():
         ax.set_title(lab,loc='left',fontsize=7)
         if li==0: ax.set_ylabel('MS-supported fraction'); panel_letter(ax,'a',dx=-0.30)
         else: ax.set_yticklabels([])
-    fig.text(0.075,0.965,'Under the primary MS labels, neither concordance nor anchoring tracks MS support; PAV signals are supported less often',fontsize=8)
+    fig.text(0.075,0.965,'Under the Seer-study MS labels (MSPA, Seer full), neither concordance nor anchoring tracks MS support; PAV signals are supported less often',fontsize=8)
     fig.legend(handles=[Patch(color='#555555',label='feature present (coloured)'),Patch(color='#C8C8C8',label='absent')],loc='upper left',bbox_to_anchor=(0.07,0.585),ncol=2,fontsize=6,handlelength=1) if False else None
     SRC['Fig4a']=pd.DataFrame(rows_); SRC['Fig4a']['test']='two-sided Fisher exact; coloured = feature present, grey = absent'
     # b: H3ii groups
