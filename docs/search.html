@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project Olink cis-pQTL credible sets.">
+<title>Search · pQTL Evidence Tiers</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="container"><a class="brand" href="index.html">pQTL Evidence Tiers</a><nav aria-label="Main"><ul><li><a class="navlink" href="search.html" aria-current="page">Search</a></li><li><a class="navlink" href="about.html">About</a></li><li><a class="navlink" href="download.html">Download</a></li><li class="gh"><a class="navlink" href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></li></ul></nav></div></header>
+<main id="main" class="container">
+  <h1 class="sr-only">Search the evidence tiers</h1>
+  <div class="results-head">
+    <form class="searchbox compact" id="qform" action="search.html" method="get" role="search" aria-label="Search the resource">
+      <label for="q" class="sr-only">Gene symbol, UniProt accession, rsID, variant or Olink ID</label>
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="Gene symbol, UniProt, rsID, variant or Olink ID">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="toolbar" id="toolbar" hidden>
+    <div class="bar">
+      <span class="count" id="count" aria-live="polite"></span>
+      <span class="spacer"></span>
+      <label for="sort" class="sr-only">Sort credible sets</label>
+      <select id="sort" class="btn"><option value="p">Strongest signal first</option><option value="tier">By tier</option></select>
+      <button type="button" class="btn" id="copy">Copy link</button>
+      <button type="button" class="btn" id="csv">Download CSV</button>
+    </div>
+    <div class="bar">
+      <span class="chips" role="group" aria-label="Filter results">
+        <button type="button" class="chip" data-tier="1" aria-pressed="true"><span class="dot t1"></span>Tier 1</button>
+        <button type="button" class="chip" data-tier="2" aria-pressed="true"><span class="dot t2"></span>Tier 2</button>
+        <button type="button" class="chip" data-tier="3" aria-pressed="true"><span class="dot t3"></span>Tier 3</button>
+        <button type="button" class="chip" data-tier="4" aria-pressed="true"><span class="dot t4"></span>Tier 4</button>
+        <span class="sep" aria-hidden="true"></span>
+        <button type="button" class="chip" id="flagonly" aria-pressed="false">Flagged only</button>
+      </span>
+    </div>
+  </div>
+  <p class="status" id="status" role="status" aria-live="polite">Loading data…</p>
+  <div id="results"></div>
+  <button type="button" class="btn more-btn" id="more" hidden>Show more</button>
+  <noscript><p class="status">Searching needs JavaScript. The full table is available on the <a href="download.html">Download</a> page.</p></noscript>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container"><span>pQTL Evidence Tiers v2.2</span><span>Cite: <a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">doi:10.5281/zenodo.23938291</a></span><span><a href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></span><span>Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a> · Code MIT</span><span>No cookies, no tracking</span></div></footer>
+<script src="assets/search.js"></script>
+</body>
+</html>

@@ -11,5 +11,8 @@
 | Seer Proteograph summary statistics, GWAS Catalog GCST90570713–GCST90572692 | `ms_ext_*`, `seer_ext_*` | GWAS Catalog terms | Suhre et al. 2025; Cerezo et al. 2025, doi:10.1093/nar/gkae1070 |
 | ARIC (Zhang et al. 2022 supplementary tables) | `aric_*`, `rep_aric_*`, `dir_aric_ea` | publisher supplementary files | Zhang et al. 2022, doi:10.1038/s41588-022-01051-w |
 | Fenland (associations curated in the GWAS Catalog) | `fenland_has_cis`, `rep_fenland`, `dir_fenland` | GWAS Catalog terms | Pietzner et al. 2021 Science, doi:10.1126/science.abj1541; Cerezo et al. 2025 |
+| Open Targets Platform 26.09 variant index (GraphQL `variant.rsIds`) | `rsIds` (portal data only; not a field of the resource TSV) | Open Targets data, CC0 | Buniello et al. 2025 NAR, doi:10.1093/nar/gkae1128 |
 
 ARIC supplementary files were retrieved from the publisher (static-content.springer.com); Fenland associations from the GWAS Catalog REST API for PMID 34648354 (retrieved 2026-11-04). science.org and omicscience.org were not accessible programmatically. None of these files are redistributed here.
+
+rsIDs shown and searchable on the lookup portal were taken from the Open Targets Platform 26.09 variant index (the same release as the credible sets); 14,076 of 14,078 lead variants have at least one rsID. They are added to the portal data file (`docs/data/tiers_v2.2.json`) only.
