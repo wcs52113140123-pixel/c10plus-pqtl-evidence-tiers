@@ -1,0 +1,6 @@
+__pycache__/
+*.parquet
+*.tar.gz
+work/
+results/
+.DS_Store
