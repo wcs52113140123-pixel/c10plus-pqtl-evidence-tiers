@@ -1,4 +1,4 @@
-# C10+ PAV-aware evidence tiers for UKB-PPP cis-pQTL credible sets (v1.2)
+# PAV-aware evidence tiers for UKB-PPP cis-pQTL credible sets (v1.2)
 
 **Online lookup portal:** https://wcs52113140123-pixel.github.io/c10plus-pqtl-evidence-tiers/
 
