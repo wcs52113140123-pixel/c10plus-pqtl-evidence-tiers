@@ -1,21 +1,27 @@
 cff-version: 1.2.0
 message: "If you use this software or resource, please cite it as below and also cite the original data sources listed in DATA_LICENSE.md."
-title: "C10+ PAV-aware evidence tiers for UKB-PPP cis-pQTL credible sets"
-version: 1.2.0
+title: "PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project plasma cis-pQTLs: resource, code and analysis plans"
+version: 1.3.0
 date-released: 2026-11-04
-doi: 10.5281/zenodo.23938291
+doi: 10.5281/zenodo.23943481
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23943481
+    description: "Zenodo archive, version 1.3"
+  - type: doi
+    value: 10.5281/zenodo.23938290
+    description: "Zenodo concept DOI (all versions)"
 repository-code: "https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers"
+url: "https://wcs52113140123-pixel.github.io/c10plus-pqtl-evidence-tiers/"
 license: MIT
 authors:
   - family-names: "Ni"
     given-names: "Jiayao"
     affiliation: "Division of Geriatric Nephrology, The First Affiliated Hospital of Nanjing Medical University"
-    orcid: "https://orcid.org/0009-0003-8023-6987"
   - family-names: "Zhang"
     given-names: "Wanqiang"
     affiliation: "Sir Run Run Hospital, Nanjing Medical University"
   - family-names: "Zhang"
     given-names: "Tao"
     affiliation: "Division of Geriatric Nephrology, The First Affiliated Hospital of Nanjing Medical University"
-    orcid: "https://orcid.org/0000-0001-5154-7362"
-keywords: [pQTL, epitope effects, protein-altering variants, Olink, SomaScan, mass spectrometry, colocalisation, Mendelian randomization, pre-registration]
+keywords: [pQTL, epitope effects, protein-altering variants, Olink, SomaScan, mass spectrometry, colocalisation, Mendelian randomization, analysis plan, Generation Scotland, HOLBAEK]

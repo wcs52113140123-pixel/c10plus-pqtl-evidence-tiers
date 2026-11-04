@@ -3,7 +3,7 @@
 suppressPackageStartupMessages({library(readr); library(dplyr)})
 args <- commandArgs(trailingOnly = TRUE)
 gene <- if (length(args) > 0) args[1] else "PCSK9"
-grades <- read_tsv("C10plus_cis_pqtl_robustness_grades_v2.2.tsv.gz", show_col_types = FALSE, guess_max = 20000)
+grades <- read_tsv("C10plus_cis_pqtl_robustness_grades_v2.3.tsv.gz", show_col_types = FALSE, guess_max = 20000)
 
 cs <- grades %>% filter(symbol == gene) %>% arrange(desc(lead_mlog10p), desc(abs(lead_beta)))
 n_tied <- sum(cs$lead_mlog10p == max(cs$lead_mlog10p))

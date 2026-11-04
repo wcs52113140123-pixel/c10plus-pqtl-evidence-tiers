@@ -1,0 +1,37 @@
+adjusted_covariates:
+- age
+- 'sex '
+- BMI-SDS
+- binary obesity status
+- obesity*BMI-SDS
+- proteomics data PC1
+- sample storage time
+- genotyping batch
+analysis_software: GEMMA (v0.98.5)
+coordinate_system: 1-based
+data_file_md5sum: 9f07d2d2e4b511dc87a3ccfa08625664
+data_file_name: GCST90453215.h.tsv.gz
+date_metadata_last_modified: 2025-11-25
+file_type: GWAS-SSF v1.0
+genome_assembly: GRCh38
+genotyping_technology:
+- Exome genotyping array
+gwas_catalog_api: https://www.ebi.ac.uk/gwas/rest/api/studies/GCST90453215
+gwas_id: GCST90453215
+harmonisation_reference: ftp://ftp.ensembl.org/pub/release-95/fasta/homo_sapiens/dna/
+imputation_panel: HRC1.1 panel (GRCh37)
+imputation_software: Sanger Imputation Server with PBWT
+is_harmonised: true
+is_sorted: true
+ontology_mapping:
+- OBA_VT0005416
+samples:
+- ancestry_method:
+  - genetically determined
+  case_control_study: false
+  sample_ancestry_category:
+  - European
+  sample_size: 1909
+sex: combined
+trait_description:
+- CFP protein levels

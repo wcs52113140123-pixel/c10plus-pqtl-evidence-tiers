@@ -1,6 +1,6 @@
-# C10+ cis-pQTL 稳健性分级资源 v2.2 —— 字段说明
+# C10+ cis-pQTL 稳健性分级资源 v2.3 —— 字段说明
 
-文件：`C10plus_cis_pqtl_robustness_grades_v2.2.parquet` / `.tsv.gz`；14,472 行 = UKB-PPP EUR 全部 cis 可信集（OT 26.09，SuSiE-inf），1,879 个基因。生成：2026-11-03；定义见预注册 v2.0（SHA256 126f515f…）。
+文件：`C10plus_cis_pqtl_robustness_grades_v2.3.parquet` / `.tsv.gz`（101 列；v2.2 的 76 列逐值不变，另增 25 个 A4 字段）；14,472 行 = UKB-PPP EUR 全部 cis 可信集（OT 26.09，SuSiE-inf），1,879 个基因。生成：2026-11-03；定义见预注册 v2.0（SHA256 126f515f…）。
 
 ## 使用建议
 - `tier` 是预注册的规则分级，不依赖模型训练；**T4 表示仅凭亲和测量无法区分真实丰度效应与表位效应**，不是“假阳性”判定（例如 PCSK9 的功能性错义变异也会落入 T4），需要质谱或其他正交证据。
@@ -97,3 +97,19 @@
 | `rep_aric_ea_strict` | ARIC-EA 精细定位变异 PIP≥0.5 落在 UKB 95% 集 |
 | `dir_aric_ea` | 复现时的效应方向（same/opposite/undetermined/NA） |
 | `fenland_has_cis` / `rep_fenland` / `dir_fenland` | Fenland（名称映射，93.0%）cis 先导落在 UKB 95% 集；方向 |
+
+## v2.3 新增字段（增补 A4：独立质谱真值层；Generation Scotland 血清 SWATH N=15,035；HOLBAEK 血浆 Astral N≈1,909）
+| 字段 | 说明 |
+|---|---|
+| `ms_gs_primary` | supported（指标变异 GS P<0.05/1,103 且方向一致）/ refuted（功效≥0.99 且未支持）/ indeterminate / not_assessed |
+| `ms_gs_nominal` / `ms_gs_cswide` | 名义阈值标签 / 全可信集标签（同 A1 规则） |
+| `gs_entries` | 参与评估的 GS 条目（UniProt 组；仅映射到单一 UKB cis 基因的条目） |
+| `gs_index_variant` / `gs_beta_aligned` / `gs_se` / `gs_p` / `gs_power` / `gs_zexp` | 功效最高条目中的指标变异、对齐到 OT alt 的效应、SE、P、功效、期望 z |
+| `gs_opposite_sig` | 存在显著但方向相反的 (cs, 条目) 对 |
+| `gs_multi_gene_entry` | 主分析恒为 False（多基因歧义条目只进敏感性） |
+| `ms_hb_primary` / `ms_hb_nominal` / `ms_hb_cswide` | HOLBAEK 标签（P<0.05/720）；`not_evaluable` = 该蛋白无公开汇总统计（只公开有 pQTL 的蛋白，存在选择偏倚） |
+| `hb_entries` / `hb_index_variant` / `hb_beta_aligned` / `hb_se` / `hb_p` / `hb_power` / `hb_zexp` / `hb_opposite_sig` | 同上（HOLBAEK，GRCh38 harmonised） |
+| `hb_evaluable` | 同源基因有 HOLBAEK 发现集汇总统计 |
+| `ms_independent_combined` | GS∪HOLBAEK：任一 supported → supported；否则任一 refuted → refuted |
+
+注：GS 只有常染色体（F9、SERPINA7、CFP 不可评估）；GS 坐标 GRCh37，经 hg38ToHg19 后按位置+无序等位基因匹配，偏移 0；HOLBAEK 为 GRCh38，偏移 0。MS 测肽段，GS 无 PAV 感知定量，PAV 阳性 CS 的 GS 支持不能单独证明丰度效应。GS 与 Seer 全量主标签 κ=−0.02（n=73），GS 与 HOLBAEK κ=0.57（n=161）。
