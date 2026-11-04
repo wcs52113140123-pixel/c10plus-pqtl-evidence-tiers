@@ -6,11 +6,11 @@ Files: `C10plus_cis_pqtl_robustness_grades_v2.3.parquet` / `.tsv.gz` (101 column
 
 ## Usage notes
 - `tier` is a rule-based annotation from the pre-specified analysis plan; it does not depend on model training. **T4 means that affinity measurements alone cannot separate a true abundance effect from an epitope effect.** It is not a false-positive call (for example, functional missense variants in PCSK9 also fall into T4); such signals need mass-spectrometry or other orthogonal evidence.
-- *(Note added in the English version.)* Tiers annotate PAV and transcript (eQTL) support. They are not a validated reliability ranking: in the analysis, transcript support did not predict mass-spectrometry confirmation.
-- `platform_concordance` is informational only: in this study, cross-affinity-platform concordance was higher for PAV-containing signals, and platform concordance was not significantly associated with MS support.
+- Tiers annotate PAV and transcript (eQTL) support. They are not a validated reliability ranking: in the analysis, transcript support did not predict mass-spectrometry confirmation.
+- `platform_concordance` is informational only: cross-affinity-platform concordance was higher for PAV-containing signals, so for these signals concordance is not orthogonal validation. Overall, platform concordance was positively associated with MS support in the two independent MS cohorts (Generation Scotland, HOLBAEK; combined OR 2.92) but only weakly, and not significantly, in the two Seer layers.
 - `p_ms_support_model` transfers poorly (held-out AUC 0.68; reversed when transferred to other truth labels). Do not use it alone for filtering.
 - Colocalisation uses per-variant logBF within Open Targets 99% credible sets (not full-region lbf) and is an approximation.
-- *(Note added in the English version.)* Credible sets on chromosome X have no MS support labels: none of the MS layers releases chrX summary statistics.
+- Credible sets on chromosome X have no MS support labels: none of the MS layers releases chrX summary statistics.
 
 ## Fields
 | Field | Description |

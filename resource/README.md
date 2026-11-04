@@ -1,11 +1,10 @@
 # C10+ PAV-aware evidence tiers for UKB-PPP cis-pQTL credible sets (v2.3)
 
-**Files**: `C10plus_cis_pqtl_robustness_grades_v2.3.tsv.gz` (SHA-256 `067b7f7c44767b1befa429e5721dafac8e7d5ecd8a88473ffd2e7ce550b3c8be`) and `.parquet` (Zenodo). The previous release, v2.2 (SHA-256 `88e71c8b96f113db07798a577fe350fed3543cea299ecb10eee4b1f5786a71f5`), is kept in this folder unchanged.
-**Rows**: 14,472 = all Open Targets 26.09 UKB-PPP European-ancestry cis credible sets (SuSiE-inf) from the UKB-PPP Olink Explore 3072 study, 1,879 genes; 101 columns. Replication layers: SomaScan v3 (Sun et al. 2018, INTERVAL), SomaScan v4 (Eldjarn et al. 2023, deCODE; assay availability inferred from the published signal tables) and, in addendum A2, SomaScan v4 ARIC (Zhang et al. 2022; European and African ancestry) and Fenland (Pietzner et al. 2021; GWAS Catalog lead associations). Mass-spectrometry layers: MSPA and Seer full summary statistics (one Seer Proteograph study; Suhre et al. 2025) and, in addendum A4, Generation Scotland (serum SWATH, N = 15,035; Richmond et al. 2026) and HOLBAEK (plasma Orbitrap Astral, N ≈ 1,909; Niu et al. 2025).
-**v2.3 vs v2.2**: the 76 v2.2 columns are unchanged value for value; 25 addendum A4 columns were appended (`ms_gs_*`, `gs_*`, `ms_hb_*`, `hb_*`, `ms_independent_combined`; see the end of the field table). Tiers and concordance do not use the A4 layers.
-**v2.2 vs v2.1**: the 67 v2/v2.1 columns are unchanged value for value; nine addendum A2 columns were appended (see the end of the field table). Tiers, concordance and MS labels do not use the A2 layers. (v2.1 vs v2: README and example scripts only.)
-**Definitions**: frozen pre-registration v2.0 (SHA-256 126f515f4734baef319629584521bc492e4a70730067f293c76964c2b62a89b0) addendum A1 (SHA-256 6d54bd5478c43184e349523b95c0406ded7bab5e106823e0d7537ad85b2035e2) addendum A2 (SHA-256 08df92f09ddaa5e82e54e87e134cab325dc6d02224b00456dcde6599522cbdb3) and addendum A4 (SHA-256 cc2da0441cba82e1248ff6c328ac692cc5043fa0b6c133a5eb30f74c01935fd7).
-**Licence**: CC BY 4.0 (derived data; third-party terms in DATA_LICENSE.md) · **Citation**: Ni J, Zhang W, Zhang T (2026), v1.3, https://doi.org/10.5281/zenodo.23943481 (all versions: https://doi.org/10.5281/zenodo.23938290)
+**Files**: `C10plus_cis_pqtl_robustness_grades_v2.3.tsv.gz` (SHA-256 `067b7f7c44767b1befa429e5721dafac8e7d5ecd8a88473ffd2e7ce550b3c8be`) and `.parquet`
+**Rows**: 14,472 = all Open Targets 26.09 UKB-PPP European-ancestry cis credible sets (SuSiE-inf) from the UKB-PPP Olink Explore 3072 study, 1,879 genes; 101 columns. Replication layers: SomaScan v3 (Sun et al. 2018, INTERVAL), SomaScan v4 (Eldjarn et al. 2023, deCODE; assay availability inferred from the published signal tables) and, in addendum A2, SomaScan v4 ARIC (Zhang et al. 2022; European and African ancestry) and Fenland (Pietzner et al. 2021; GWAS Catalog lead associations).
+**v2.3 vs v2.2**: the 76 v2.2 columns are unchanged value for value; 25 addendum A4 columns were appended with mass-spectrometry labels from two cohorts that are independent of the Seer study: Generation Scotland (Richmond et al. 2026; serum Scanning SWATH; N = 15,035; primary) and HOLBAEK (Niu et al. 2025; plasma Orbitrap Astral DIA; N = 1,909; secondary). Tiers and concordance are unchanged. **v2.2 vs v2.1**: the 67 v2/v2.1 columns are unchanged value for value; nine addendum A2 columns were appended (see the end of the field table). Tiers, concordance and MS labels do not use the A2 layers. (v2.1 vs v2: README and example scripts only.)
+**Definitions**: frozen pre-registration v2.0 (SHA-256 126f515f4734baef319629584521bc492e4a70730067f293c76964c2b62a89b0) addendum A1 (SHA-256 6d54bd5478c43184e349523b95c0406ded7bab5e106823e0d7537ad85b2035e2) addendum A2 (SHA-256 08df92f09ddaa5e82e54e87e134cab325dc6d02224b00456dcde6599522cbdb3), addendum A3 (SHA-256 4a5170ac229e012b253a36046f7163144e0669ec1fec8f66b4e77d81279c3971) and addendum A4 (SHA-256 cc2da0441cba82e1248ff6c328ac692cc5043fa0b6c133a5eb30f74c01935fd7).
+**Licence**: CC BY 4.0 · **Citation**: Ni J, Zhang W, Zhang T. Protein-altering variants inflate cross-platform replication of plasma protein QTLs (manuscript in submission). Data: https://doi.org/10.5281/zenodo.23944552 (version 1.3.1; all versions https://doi.org/10.5281/zenodo.23938290); code: GitHub tag v1.3.1. Portal: https://wcs52113140123-pixel.github.io/c10plus-pqtl-evidence-tiers/ (rsIDs shown on the portal come from Open Targets 26.09).
 
 ## How to use
 - `tier` is the pre-registered rule-based grade and does not depend on model training:
@@ -15,11 +14,11 @@
   - **T4** no eQTL anchor, PAV in the 95% set, regardless of platform concordance — 1,205 CS
 - **T4 does not mean false positive.** It means affinity measurements alone cannot separate an abundance effect from an epitope effect (functional coding variants in PCSK9, APOE and LPL are T4). Seek MS, functional or orthogonal biomarker evidence.
 - `flag_concordant_unanchored_PAV` (339 CS, 254 genes): T4 signals that replicated on SomaScan; concordance is least informative here.
-- `platform_concordance` is informational only: in our analysis PAVs inflated binary Olink–SomaScan replication (power-matched OR 2.74) and concordance was not associated with MS support under either primary MS label.
+- `platform_concordance` is informational: PAVs inflated binary Olink–SomaScan replication (power-matched OR 2.74), so concordance is not orthogonal validation for PAV-containing signals. In general, concordance was associated with MS support in the two independent MS cohorts (combined OR 2.92) but only weakly in the Seer layers.
 - `p_ms_support_model` has poor external validity (held-out AUC 0.68; below-chance transfer to other labels); do not use it alone for filtering.
 - `flag_beta_inconsistent` (204 CS, post hoc): OT lead β > 5× the value expected from P and MAF; exclude before effect-size analyses.
 - Colocalisation uses per-variant logBF within OT 99% sets (approximation to full-region coloc). MAF is gnomAD NFE (UKB-PPP eaf unavailable).
-- MS columns: `ms_primary`, `ms_mspa_peptide`, `ms_seer_discovery` (Suhre et al. 2025 tables) and the v2 fields `ms_ext_primary`, `ms_ext_nominal`, `ms_ext_cswide`, `seer_ext_*` (addendum A1: Seer full summary statistics, 564 studies; 167 supported / 200 refuted / 1,344 indeterminate). Both MS label sets come from one MS study (agreement κ = 0.89) and are not independent. Neither eQTL anchoring nor platform concordance predicted MS support under the primary labels; PAV-containing CS were less often MS-supported (exploratory). Seer files lack chromosome X.
+- MS columns: `ms_primary`, `ms_mspa_peptide`, `ms_seer_discovery` (Suhre et al. 2025 tables) and the v2 fields `ms_ext_primary`, `ms_ext_nominal`, `ms_ext_cswide`, `seer_ext_*` (addendum A1: Seer full summary statistics, 564 studies; 167 supported / 200 refuted / 1,344 indeterminate). Both Seer label sets come from one MS study (agreement κ = 0.89) and are not independent. v2.3 adds `ms_gs_*`/`gs_*` (Generation Scotland) and `ms_hb_*`/`hb_*` (HOLBAEK) labels computed with the A1 rule; these two layers agree with each other (κ = 0.57) but hardly with the Seer labels (κ −0.02 to 0.11). eQTL anchoring did not predict MS support in any of the four layers; PAV-containing CS were less often MS-supported in all four (independent cohorts combined OR 0.61, P = 0.056; secondary analysis). No MS layer includes chromosome X (500 CS carry no MS label).
 
 ## Interpreting tiers (read before filtering)
 Tier numbers code **evidence patterns, not an ordinal validity scale**. Observed rates by tier (T1/T2/T3/T4):
@@ -28,12 +27,10 @@ Tier numbers code **evidence patterns, not an ordinal validity scale**. Observed
 |---|---|---|---|---|---|
 | MS supported, MSPA | 49/92 (53%) | 14/35 (40%) | 16/24 (67%) | 4/18 (22%) | 0.17 |
 | MS supported, Seer full (A1) | 86/179 (48%) | 24/61 (39%) | 49/103 (48%) | 8/24 (33%) | 0.39 |
-| MS supported, Generation Scotland (A4) | 50/78 (64%) | 18/31 (58%) | 221/303 (73%) | 24/38 (63%) | not computed |
-| MS supported, HOLBAEK (A4) | 123/147 (84%) | 37/47 (79%) | 164/185 (89%) | 19/24 (79%) | not computed |
+| MS supported, Generation Scotland (A4) | 50/78 (64%) | 18/31 (58%) | 221/303 (73%) | 24/38 (63%) | 0.25 |
+| MS supported, HOLBAEK (A4) | 123/147 (84%) | 37/47 (79%) | 164/185 (89%) | 19/24 (79%) | 0.42 |
 | Cross-ancestry replicated | 1,681/2,387 (70%) | 433/616 (70%) | 2,078/4,594 (45%) | 345/468 (74%) | non-monotonic |
 
-- MS rates are supported / (supported + refuted). HOLBAEK released summary statistics only for proteins with at least one pQTL, so its rates are likely inflated (proteins without released statistics are `not_evaluable`).
-- Credible sets on chromosome X (500) have no MS support labels: none of the MS layers releases chrX summary statistics.
 - MS denominators are small and selected: only 0.2% (T3) to 5.1% (T2) of credible sets are MSPA-evaluable.
 - T1 means "eQTL colocalisation and no PAV". This is a mechanistic argument against a binding-only explanation, not evidence from MS that the signal is true.
 - MS `refuted` labels (both layers) assume equal standardized effects on Olink and Seer. In the A1 layer, observed Seer |z| was a median 0.50 of expectation among well-powered credible sets, and refutations nearly vanish if expected effects are reduced by 10–20%. Read `refuted` as "not detected despite nominal power".
@@ -43,10 +40,11 @@ Tier numbers code **evidence patterns, not an ordinal validity scale**. Observed
 ## Versioning and reproducibility
 - Anchors depend on GTEx v10 and the eQTL Catalogue as distributed in Open Targets 26.09, and replication depends on the published SomaScan tables. Later releases may change anchors and replication calls. Any re-grading will be released as a new version with its own checksums. Tier rules will not change without a new pre-registration.
 - Analysis code (with run order) and figure code are provided with the Zenodo archive.
+- A4 caveat: Generation Scotland and HOLBAEK labels use the equal-standardized-effect power rule of A1; read `refuted` as "not detected despite nominal power". MS quantification is itself sequence-dependent.
 - A2 caveat: deCODE, ARIC and Fenland all use SomaScan v4, so agreement among them is cross-cohort reproducibility, not platform orthogonality. Do not count `rep_aric_ea`/`rep_fenland` as independent validation of an epitope-sensitive signal.
 
 ## Examples
-(`FIELD_DICTIONARY_en.md` and `FIELD_DICTIONARY_zh.md` list the same fields; the field table below is authoritative.)
+(`FIELD_DICTIONARY_zh.md` is a Chinese field dictionary and `FIELD_DICTIONARY_en.md` its English translation; for field definitions, this README is authoritative.)
 - Python: `python example_select_instruments.py PCSK9`
 - R: `Rscript example_select_instruments.R PCSK9`
 Both list all cis CS for a gene (ties at the capped P broken by |β|, with a warning), report the strongest Tier 1 credible set as a candidate sensitivity instrument and summarise flags (tested with pandas 2.3 / R 4.x readr+dplyr).
@@ -131,15 +129,30 @@ Both list all cis CS for a gene (ties at the capped P broken by |β|, with a war
 | `rep_fenland` | 1 if any Fenland cis lead variant of the cognate gene lies in the 95% CS (exact position; no LD proxies); NA if `fenland_has_cis` = 0 (v2.2) |
 | `dir_fenland` | effect direction of the matched Fenland lead vs UKB-PPP: same / opposite / NA (v2.2) |
 
-| `ms_gs_primary` | Generation Scotland MS label: supported (index variant P < 0.05/1,103 with concordant direction) / refuted (power ≥ 0.99, not supported) / indeterminate / not_assessed (v2.3) |
-| `ms_gs_nominal` / `ms_gs_cswide` | GS nominal-threshold and credible-set-wide labels (A1 rules) (v2.3) |
-| `gs_entries` | GS entries evaluated (UniProt groups mapping to a single UKB cis gene) (v2.3) |
-| `gs_index_variant` / `gs_beta_aligned` / `gs_se` / `gs_p` / `gs_power` / `gs_zexp` | GS index variant, effect aligned to the OT alt allele, SE, P, power and expected z (v2.3) |
-| `gs_opposite_sig` | a significant GS (cs, entry) pair with opposite direction exists (v2.3) |
-| `gs_multi_gene_entry` | always False in the primary analysis (v2.3) |
-| `ms_hb_primary` / `ms_hb_nominal` / `ms_hb_cswide` | HOLBAEK labels (P < 0.05/720); `not_evaluable` = no public summary statistics for the protein (v2.3) |
-| `hb_entries` / `hb_index_variant` / `hb_beta_aligned` / `hb_se` / `hb_p` / `hb_power` / `hb_zexp` / `hb_opposite_sig` | as the GS fields, for HOLBAEK (GRCh38 harmonised) (v2.3) |
-| `hb_evaluable` | cognate gene has HOLBAEK discovery-set summary statistics (v2.3) |
-| `ms_independent_combined` | GS ∪ HOLBAEK: any supported → supported; otherwise any refuted → refuted (v2.3) |
+| `ms_gs_primary` | Generation Scotland primary label (A1 rule; K = 1,103 pairs, α = 4.5×10⁻⁵): supported / refuted / indeterminate / not_assessed (v2.3) |
+| `ms_gs_nominal` | as above at P < 0.05 with power at α = 0.05 (v2.3) |
+| `ms_gs_cswide` | supported if any evaluable 95%-CS variant has P < α/n_eval with concordant direction (v2.3) |
+| `gs_opposite_sig` | a significant opposite-direction (CS, entry) pair exists (v2.3) |
+| `gs_entries` | Generation Scotland DataShare entries (UniProt-group fastGWA files) evaluated (v2.3) |
+| `gs_index_variant` | index variant (highest-PIP evaluable 95%-CS variant) (v2.3) |
+| `gs_beta_aligned` | Generation Scotland effect aligned to the OT alt allele (v2.3) |
+| `gs_se` | Generation Scotland SE (v2.3) |
+| `gs_p` | Generation Scotland P (v2.3) |
+| `gs_power` | power at the Bonferroni threshold (v2.3) |
+| `gs_zexp` | expected z = |z_UKB|·√(N_GS/N_UKB) (v2.3) |
+| `ms_hb_primary` | HOLBAEK primary label (A1 rule; K = 720 pairs, α = 6.9×10⁻⁵): supported / refuted / indeterminate / not_assessed / not_evaluable (no public HOLBAEK summary statistics for the protein) (v2.3) |
+| `ms_hb_nominal` | as above at P < 0.05 (v2.3) |
+| `ms_hb_cswide` | CS-wide HOLBAEK label (v2.3) |
+| `hb_opposite_sig` | a significant opposite-direction (CS, study) pair exists (v2.3) |
+| `hb_entries` | HOLBAEK GWAS Catalog studies (GCST90452968–GCST90453410) evaluated (v2.3) |
+| `hb_index_variant` | index variant (v2.3) |
+| `hb_beta_aligned` | HOLBAEK effect aligned to the OT alt allele (v2.3) |
+| `hb_se` | HOLBAEK SE (v2.3) |
+| `hb_p` | HOLBAEK P (v2.3) |
+| `hb_power` | power at the Bonferroni threshold (v2.3) |
+| `hb_zexp` | expected z = |z_UKB|·√(N_HB/N_UKB) (v2.3) |
+| `hb_evaluable` | True if the cognate protein has a HOLBAEK discovery study with public summary statistics (v2.3) |
+| `ms_independent_combined` | Generation Scotland ∪ HOLBAEK: supported if either supports; otherwise refuted if either refutes; otherwise indeterminate / not_assessed (v2.3) |
+| `gs_multi_gene_entry` | True if the Generation Scotland entry maps to more than one gene (none among labelled CS in this release) (v2.3) |
 
-Field dictionaries: `FIELD_DICTIONARY_en.md` (English) and `FIELD_DICTIONARY_zh.md` (Chinese).
+A Chinese-language dictionary is provided as `FIELD_DICTIONARY_zh.md`.
