@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project Olink cis-pQTL credible sets.">
+<title>About · pQTL Evidence Tiers</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="container"><a class="brand" href="index.html">pQTL Evidence Tiers</a><nav aria-label="Main"><ul><li><a class="navlink" href="search.html">Search</a></li><li><a class="navlink" href="about.html" aria-current="page">About</a></li><li><a class="navlink" href="download.html">Download</a></li><li class="gh"><a class="navlink" href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></li></ul></nav></div></header>
+<main id="main" class="page">
+  <h1>About</h1>
+  <p class="lead">Each UKB-PPP Olink cis-pQTL credible set is graded by transcript-level support (colocalisation with a cognate eQTL, PP.H4 ≥ 0.8) and by whether it contains a protein-altering variant (PAV) of the cognate gene. Replication on SomaScan cohorts, mass-spectrometry labels and cross-ancestry replication are listed alongside. Tiers follow fixed rules from a pre-specified analysis plan (<a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">Zenodo</a>).</p>
+
+  <h2 id="tiers">Evidence tiers</h2>
+  <ul class="tierlist">
+    <li><span><span class="badge t1">Tier 1</span></span><span>eQTL-anchored, no PAV in the 95% credible set. <span class="na">n = 2,539</span></span></li>
+    <li><span><span class="badge t2">Tier 2</span></span><span>eQTL-anchored with a PAV, or anchored to an sQTL/tuQTL only. <span class="na">n = 682</span></span></li>
+    <li><span><span class="badge t3">Tier 3</span></span><span>No anchor and no PAV: unresolved. <span class="na">n = 10,046</span></span></li>
+    <li><span><span class="badge t4">Tier 4</span></span><span>No anchor, with PAV: affinity data alone cannot separate an abundance effect from an epitope effect. This is not a false-positive call. <span class="na">n = 1,205</span></span></li>
+    <li><span><span class="flagchip">Flag</span></span><span>Concordant + unanchored + PAV: replicated on SomaScan, yet unanchored and PAV-containing; the class most in need of confirmation. <span class="na">n = 339</span></span></li>
+  </ul>
+
+  <h2>Notes</h2>
+  <ul class="notes">
+    <li>Tiers are not mass-spectrometry (MS) ground truth. MS labels exist for few, mostly strong signals.</li>
+    <li>Both MS label sets (MSPA and Seer full summary statistics) come from one Seer Proteograph study and are not independent.</li>
+    <li>deCODE, ARIC and Fenland all use SomaScan v4; agreement among them is cross-cohort, not orthogonal, evidence.</li>
+    <li>Only derived per-credible-set statistics are provided. rsIDs are taken from the Open Targets Platform 26.09 variant index.</li>
+  </ul>
+
+  <h2 id="cite">How to cite</h2>
+  <p class="cite">Ni J, Zhang W, Zhang T. PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project plasma cis-pQTLs: resource, code and pre-registration (v1.2). Zenodo; 2026. <a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">https://doi.org/10.5281/zenodo.23938291</a></p>
+  <p>Please also cite the original data sources:</p>
+  <ul class="sources">
+    <li>UKB-PPP — Sun et al., <i>Nature</i> 2023. <a href="https://doi.org/10.1038/s41586-023-06592-6" rel="noopener">doi:10.1038/s41586-023-06592-6</a></li>
+    <li>Open Targets Platform — Buniello et al., <i>Nucleic Acids Res</i> 2025. <a href="https://doi.org/10.1093/nar/gkae1128" rel="noopener">doi:10.1093/nar/gkae1128</a></li>
+    <li>SomaScan v3 (INTERVAL) — Sun et al., <i>Nature</i> 2018. <a href="https://doi.org/10.1038/s41586-018-0175-2" rel="noopener">doi:10.1038/s41586-018-0175-2</a></li>
+    <li>deCODE — Eldjarn et al., <i>Nature</i> 2023. <a href="https://doi.org/10.1038/s41586-023-06563-x" rel="noopener">doi:10.1038/s41586-023-06563-x</a></li>
+    <li>ARIC — Zhang et al., <i>Nat Genet</i> 2022. <a href="https://doi.org/10.1038/s41588-022-01051-w" rel="noopener">doi:10.1038/s41588-022-01051-w</a></li>
+    <li>Fenland — Pietzner et al., <i>Science</i> 2021. <a href="https://doi.org/10.1126/science.abj1541" rel="noopener">doi:10.1126/science.abj1541</a></li>
+    <li>MS pQTLs (Seer Proteograph) — Suhre et al., <i>Nat Genet</i> 2025. <a href="https://doi.org/10.1038/s41588-025-02413-w" rel="noopener">doi:10.1038/s41588-025-02413-w</a></li>
+    <li>GTEx v10 — GTEx Consortium, <i>Science</i> 2020. <a href="https://doi.org/10.1126/science.aaz1776" rel="noopener">doi:10.1126/science.aaz1776</a></li>
+    <li>eQTL Catalogue — Kerimov et al., <i>Nat Genet</i> 2021 (<a href="https://doi.org/10.1038/s41588-021-00924-w" rel="noopener">doi:10.1038/s41588-021-00924-w</a>) and <i>PLoS Genet</i> 2023 (<a href="https://doi.org/10.1371/journal.pgen.1010932" rel="noopener">doi:10.1371/journal.pgen.1010932</a>)</li>
+    <li>GWAS Catalog — Cerezo et al., <i>Nucleic Acids Res</i> 2025. <a href="https://doi.org/10.1093/nar/gkae1070" rel="noopener">doi:10.1093/nar/gkae1070</a></li>
+    <li>Ensembl VEP — McLaren et al., <i>Genome Biol</i> 2016. <a href="https://doi.org/10.1186/s13059-016-0974-4" rel="noopener">doi:10.1186/s13059-016-0974-4</a></li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>This site is static. It loads no external scripts or fonts, sets no cookies and has no analytics; searches run in your browser. The hosting provider (GitHub Pages) may keep standard server logs.</p>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container"><span>pQTL Evidence Tiers v2.2</span><span>Cite: <a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">doi:10.5281/zenodo.23938291</a></span><span><a href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></span><span>Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a> · Code MIT</span><span>No cookies, no tracking</span></div></footer>
+
+</body>
+</html>

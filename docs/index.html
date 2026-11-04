@@ -3,146 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="Query PAV-aware evidence tiers for 14,472 UK Biobank Pharma Proteomics Project (UKB-PPP) Olink cis-pQTL credible sets.">
-<title>PAV-aware cis-pQTL evidence tiers — query portal</title>
+<meta name="description" content="PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project Olink cis-pQTL credible sets.">
+<title>pQTL Evidence Tiers</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<a class="skip" href="#search">Skip to search</a>
-<header class="masthead">
-  <div class="wrap">
-    <p class="kicker">Resource portal · manuscript in submission</p>
-    <h1>Protein-altering variants inflate agreement between affinity proteomics platforms for plasma cis-pQTLs: a pre-registered evaluation against transcript, mass-spectrometry and cross-ancestry evidence</h1>
-    <p class="authors">Jiayao Ni, Wanqiang Zhang, Tao Zhang* · The First Affiliated Hospital of Nanjing Medical University · <em>in submission</em></p>
-    <p class="lede">Look up the pre-registered, PAV-aware evidence tier of each of the <span data-meta="n_rows">14,472</span> UKB-PPP Olink cis-pQTL credible sets (<span data-meta="n_genes">1,879</span> genes), together with eQTL anchoring, cognate protein-altering variants (PAVs), replication on SomaScan cohorts, mass-spectrometry labels and cross-ancestry replication.</p>
-    <nav class="toplinks" aria-label="Downloads">
-      <a class="btn" href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">Zenodo archive (doi:10.5281/zenodo.23938291)</a>
-      <a class="btn" href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">Code on GitHub</a>
-      <a class="btn" href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers/tree/main/resource" rel="noopener">Full resource TSV + field dictionary</a>
-      <a class="btn ghost" href="#about">Tiers, cautions, citation</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-<section id="tiers" class="tiers" aria-labelledby="tiers-h">
-  <h2 id="tiers-h">How to read the tiers</h2>
-  <p class="small">Tiers are fixed rules from the frozen pre-registration; no model is trained. “Anchored” = colocalisation with a cognate GTEx v10 or eQTL Catalogue eQTL (PP.H4 ≥ 0.8). “PAV” = the 95% credible set contains a protein-altering variant of the cognate gene (VEP 116, any transcript).</p>
-  <div class="tiergrid">
-    <div class="tcard t1"><span class="badge t1">T1</span><b>Transcript-anchored, no PAV</b><span>eQTL-anchored and no cognate PAV in the credible set. Transcript-level support suggests an abundance mechanism. <span class="n" data-tier-count="1"></span></span></div>
-    <div class="tcard t2"><span class="badge t2">T2</span><b>Anchored with PAV, or isoform-only</b><span>eQTL-anchored but the set also contains a PAV, or anchored only to an sQTL/tuQTL. <span class="n" data-tier-count="2"></span></span></div>
-    <div class="tcard t3"><span class="badge t3">T3</span><b>Unresolved: no anchor, no PAV</b><span>No transcript anchor and no PAV; the mechanism cannot be classified from these features. <span class="n" data-tier-count="3"></span></span></div>
-    <div class="tcard t4"><span class="badge t4">T4</span><b>Caution: no anchor, with PAV</b><span>No anchor and the set contains a PAV, regardless of platform concordance. Affinity data alone cannot separate a true abundance effect from an epitope effect. <span class="n" data-tier-count="4"></span></span></div>
-  </div>
-  <p class="small"><b>T4 is not a false-positive call.</b> Functional missense variants (e.g. in <i>PCSK9</i>) also fall into T4; such signals need mass-spectrometry or other orthogonal evidence. The flag <span class="flagchip">concordant + unanchored + PAV</span> marks <span data-meta="n_flag_concordant_unanchored_PAV">339</span> credible sets that replicate on SomaScan but carry no anchor and a PAV — the key class to confirm.</p>
-</section>
-
-<section id="search" class="search" aria-labelledby="search-h">
-  <h2 id="search-h">Search</h2>
-  <form id="qform" autocomplete="off" role="search">
-    <label for="q" class="sr">Query</label>
-    <div class="qrow">
-      <input id="q" name="q" type="search" list="genelist" spellcheck="false" placeholder="Gene symbol, UniProt, Ensembl ID, variant (chr_pos_ref_alt) or Olink OID — several terms separated by commas" aria-describedby="qhelp">
-      <button type="submit" class="btn primary">Search</button>
-      <button type="button" id="clear" class="btn ghost">Clear</button>
-    </div>
-    <datalist id="genelist"></datalist>
-    <p id="qhelp" class="small">Prefix and fuzzy matching: <code>PCSK</code> matches PCSK7 and PCSK9; <code>IL6RR</code> suggests IL6R (fuzzy); <code>19_44908</code> or <code>chr19:44908684</code> matches lead variants by position prefix; <code>ENSG00000169174</code>, <code>Q8NBP7</code>, <code>OID20235</code> work too. Only the <em>lead</em> variant of each credible set is searchable. Leave empty and filter to browse all rows.
-      Examples:
-      <button type="button" class="ex" data-q="PCSK9">PCSK9</button>
-      <button type="button" class="ex" data-q="APOE">APOE</button>
-      <button type="button" class="ex" data-q="F11">F11</button>
-      <button type="button" class="ex" data-q="LPA">LPA</button>
-      <button type="button" class="ex" data-q="IL6R">IL6R</button>
-      <button type="button" class="ex" data-q="SIRPA">SIRPA</button>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="container"><a class="brand" href="index.html">pQTL Evidence Tiers</a><nav aria-label="Main"><ul><li><a class="navlink" href="search.html">Search</a></li><li><a class="navlink" href="about.html">About</a></li><li><a class="navlink" href="download.html">Download</a></li><li class="gh"><a class="navlink" href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></li></ul></nav></div></header>
+<main id="main">
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">pQTL Evidence Tiers</h1>
+    <p class="tagline">PAV-aware evidence tiers for every UK Biobank Pharma Proteomics Project (UKB-PPP) Olink cis-pQTL credible set.</p>
+    <form class="searchbox" action="search.html" method="get" role="search" aria-label="Search the resource">
+      <label for="q" class="sr-only">Gene symbol, UniProt accession, rsID or Olink ID</label>
+      <input id="q" name="q" type="search" list="genes" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="Gene, UniProt, rsID or Olink ID" required>
+      <button type="submit">Search</button>
+    </form>
+    <datalist id="genes"></datalist>
+    <p class="examples">Examples:
+      <a href="search.html?q=PCSK9">PCSK9</a>
+      <a href="search.html?q=APOE">APOE</a>
+      <a href="search.html?q=IL6R">IL6R</a>
+      <a href="search.html?q=LPA">LPA</a>
     </p>
-    <fieldset class="filters">
-      <legend class="sr">Filters</legend>
-      <span class="flabel">Tier</span>
-      <label class="tchk t1"><input type="checkbox" name="tier" value="1" checked> T1</label>
-      <label class="tchk t2"><input type="checkbox" name="tier" value="2" checked> T2</label>
-      <label class="tchk t3"><input type="checkbox" name="tier" value="3" checked> T3</label>
-      <label class="tchk t4"><input type="checkbox" name="tier" value="4" checked> T4</label>
-      <label><input type="checkbox" id="onlyflag"> Only concordant + unanchored + PAV</label>
-      <label>β-inconsistent
-        <select id="betaflag"><option value="any">show</option><option value="exclude">hide</option><option value="only">only</option></select></label>
-      <label><input type="checkbox" id="fuzzy"> Always include fuzzy matches</label>
-      <label>Rows/page
-        <select id="pagesize"><option>50</option><option selected>100</option><option>250</option><option>1000</option></select></label>
-    </fieldset>
-  </form>
-  <div class="status" id="status" role="status" aria-live="polite">Loading data…</div>
-  <div class="resbar">
-    <span id="rescount"></span>
-    <span class="spacer"></span>
-    <button type="button" id="prev" class="btn ghost" disabled>‹ Prev</button>
-    <span id="pageinfo"></span>
-    <button type="button" id="next" class="btn ghost" disabled>Next ›</button>
-    <button type="button" id="csv" class="btn" disabled>Export CSV (all filtered rows)</button>
-  </div>
-  <div class="tablewrap" id="tablewrap" tabindex="0" aria-label="Results table, scroll horizontally">
-    <table id="results">
-      <thead><tr id="thead"></tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
-  <p class="small">Click a row for all fields of that credible set. Click a column header to sort (click again to reverse). Values are rounded for display; the exported CSV carries the same rounded values and resource field names — use the Zenodo/GitHub TSV for analysis.</p>
-</section>
-
-<section id="about" class="about" aria-labelledby="about-h">
-  <h2 id="about-h">Cautions</h2>
-  <ul class="cautions">
-    <li><b>Not mass-spectrometry ground truth.</b> A tier summarises transcript and coding-variant evidence; it is not an MS verdict. MS labels exist for few, mostly strong signals (MSPA primary label evaluable for 169 credible sets; Seer full-statistics primary label for 367).</li>
-    <li><b>The two MS layers are not independent.</b> The MSPA labels (Suhre et al. 2025 supplementary tables) and the labels from the Seer full summary statistics (GWAS Catalog GCST90570713–GCST90572692) come from the same Seer Proteograph MS study (primary-label agreement 94.6%, κ = 0.89, n = 148). Agreement between them is not replication.</li>
-    <li><b>Platform concordance is not orthogonal validation.</b> deCODE, ARIC and Fenland are all SomaScan v4; replication across them is cross-cohort, not cross-platform. Binary cross-platform replication is higher for PAV-containing signals even after power matching, while effect agreement is lower.</li>
-    <li><b>Derived statistics only.</b> The portal and resource contain per-credible-set derived statistics and annotations. No third-party summary-statistic files are redistributed. Colocalisation uses per-variant log Bayes factors within Open Targets 99% credible sets (approximate); MAF is from gnomAD non-Finnish Europeans; <span data-meta="n_flag_beta_inconsistent">204</span> credible sets whose Open Targets β is inconsistent with P and MAF are flagged (post hoc).</li>
-    <li>Not for clinical decision-making. Model probabilities in the full resource (<code>p_ms_support_model</code>) have poor external validity and are deliberately not shown here.</li>
-  </ul>
-
-  <h2>How to cite</h2>
-  <p>Resource: Ni J, Zhang W, Zhang T. PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project plasma cis-pQTLs: resource, code and pre-registration (v1.2). Zenodo; 2026. <a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">https://doi.org/10.5281/zenodo.23938291</a>. Manuscript: Ni J, Zhang W, Zhang T. Protein-altering variants inflate agreement between affinity proteomics platforms for plasma cis-pQTLs (in submission).</p>
-  <p>Fields derived from third-party data also require citation of the original sources and compliance with their terms:</p>
-  <div class="tablewrap small-table">
-  <table class="srctable">
-    <thead><tr><th>Source</th><th>Portal fields</th><th>Cite</th></tr></thead>
-    <tbody>
-      <tr><td>UKB-PPP European-ancestry cis credible sets, Open Targets Platform 26.09 (CC0)</td><td>credible sets, lead variant, β, P, eQTL/sQTL anchors</td><td>Sun et al. 2023 Nature <a href="https://doi.org/10.1038/s41586-023-06592-6" rel="noopener">doi:10.1038/s41586-023-06592-6</a> (PMID 37794186); Buniello et al. 2025 Nucleic Acids Res <a href="https://doi.org/10.1093/nar/gkae1128" rel="noopener">doi:10.1093/nar/gkae1128</a> (PMID 39657122)</td></tr>
-      <tr><td>UKB-PPP non-European summary statistics (Synapse syn51364943; registration required)</td><td>cross-ancestry fields</td><td>Sun et al. 2023 (above)</td></tr>
-      <tr><td>Sun et al. 2018 SomaScan v3 credible sets (via Open Targets)</td><td>Sun2018 replication</td><td>Sun et al. 2018 Nature <a href="https://doi.org/10.1038/s41586-018-0175-2" rel="noopener">doi:10.1038/s41586-018-0175-2</a> (PMID 29875488)</td></tr>
-      <tr><td>eQTL Catalogue credible sets (CC BY 4.0)</td><td>eQTL / sQTL anchors</td><td>Kerimov et al. 2021 Nat Genet <a href="https://doi.org/10.1038/s41588-021-00924-w" rel="noopener">doi:10.1038/s41588-021-00924-w</a> (PMID 34493866); Kerimov et al. 2023 PLoS Genet <a href="https://doi.org/10.1371/journal.pgen.1010932" rel="noopener">doi:10.1371/journal.pgen.1010932</a> (PMID 37721944)</td></tr>
-      <tr><td>GTEx v10 public summary data</td><td>GTEx eQTL anchor</td><td>GTEx Consortium 2020 Science <a href="https://doi.org/10.1126/science.aaz1776" rel="noopener">doi:10.1126/science.aaz1776</a> (PMID 32913098)</td></tr>
-      <tr><td>deCODE SomaScan v4 (supplementary tables)</td><td>deCODE replication</td><td>Eldjarn et al. 2023 Nature <a href="https://doi.org/10.1038/s41586-023-06563-x" rel="noopener">doi:10.1038/s41586-023-06563-x</a> (PMID 37794188)</td></tr>
-      <tr><td>ARIC SomaScan v4 cis-pQTLs (supplementary tables 3, 6, 10)</td><td>ARIC-EA / ARIC-AA replication</td><td>Zhang et al. 2022 Nat Genet <a href="https://doi.org/10.1038/s41588-022-01051-w" rel="noopener">doi:10.1038/s41588-022-01051-w</a> (PMID 35501419)</td></tr>
-      <tr><td>Fenland SomaScan v4 associations (as curated in the GWAS Catalog)</td><td>Fenland replication</td><td>Pietzner et al. 2021 Science <a href="https://doi.org/10.1126/science.abj1541" rel="noopener">doi:10.1126/science.abj1541</a> (PMID 34648354); Cerezo et al. 2025 Nucleic Acids Res <a href="https://doi.org/10.1093/nar/gkae1070" rel="noopener">doi:10.1093/nar/gkae1070</a> (PMID 39530240)</td></tr>
-      <tr><td>MS pQTL assessment (MSPA) and Seer Proteograph summary statistics (GWAS Catalog GCST90570713–GCST90572692)</td><td>MS (MSPA), MS (Seer full)</td><td>Suhre et al. 2025 Nat Genet <a href="https://doi.org/10.1038/s41588-025-02413-w" rel="noopener">doi:10.1038/s41588-025-02413-w</a> (PMID 41310232); Cerezo et al. 2025 (above)</td></tr>
-      <tr><td>Ensembl VEP 116</td><td>PAV annotation</td><td>McLaren et al. 2016 Genome Biol <a href="https://doi.org/10.1186/s13059-016-0974-4" rel="noopener">doi:10.1186/s13059-016-0974-4</a> (PMID 27268795)</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-  <h2>Licence</h2>
-  <p>Resource data: <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Portal and analysis code: MIT License. Third-party inputs remain under their own terms (see the table above and <code>DATA_LICENSE.md</code> in the repository).</p>
-
-  <h2>Privacy</h2>
-  <p>This page is fully static. It loads no external scripts, fonts or images, sets no cookies, uses no local storage and contains no analytics. Searches run in your browser; the query is kept only in the page address (#…) so that results can be bookmarked. The hosting provider (GitHub Pages) may keep standard server logs.</p>
-</section>
+  </section>
+  <section class="stats" aria-label="Resource at a glance">
+    <a class="stat" href="download.html"><span class="num">14,472</span><span class="lbl">cis-pQTL credible sets in 1,879 genes</span></a>
+    <a class="stat" href="about.html#tiers"><span class="num">4</span><span class="lbl">evidence tiers</span></a>
+    <a class="stat" href="search.html?flag=1"><span class="num">339</span><span class="lbl">concordant but unanchored PAV flags</span></a>
+  </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap small">
-    Data: resource v<span data-meta="version">2.2</span> (<span data-meta="n_rows"></span> credible sets, <span data-meta="n_assays"></span> Olink assays); source file <code data-meta="source_file"></code>, SHA-256 <code data-meta="source_sha256" class="hash"></code>; portal data built <span data-meta="built_utc"></span>.
-  </div>
-</footer>
-
-<div id="tip" class="tip" role="tooltip" hidden></div>
-<dialog id="detail" aria-labelledby="detail-h">
-  <div class="dhead"><h3 id="detail-h">Credible set</h3><button type="button" class="btn ghost" id="dclose" aria-label="Close">✕</button></div>
-  <div id="dbody"></div>
-</dialog>
-<noscript><p class="wrap">This portal needs JavaScript to search the resource. The full table can be downloaded from Zenodo (doi:10.5281/zenodo.23938291).</p></noscript>
-<script src="assets/app.js"></script>
+<footer class="footer" role="contentinfo"><div class="container"><span>pQTL Evidence Tiers v2.2</span><span>Cite: <a href="https://doi.org/10.5281/zenodo.23938291" rel="noopener">doi:10.5281/zenodo.23938291</a></span><span><a href="https://github.com/wcs52113140123-pixel/c10plus-pqtl-evidence-tiers" rel="noopener">GitHub</a></span><span>Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a> · Code MIT</span><span>No cookies, no tracking</span></div></footer>
+<script src="assets/home.js"></script>
 </body>
 </html>
