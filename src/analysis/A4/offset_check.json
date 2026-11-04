@@ -1,0 +1,26 @@
+{
+ "gs": {
+  "0": {
+   "matched": 1430,
+   "ukb_cs_variants": 2048,
+   "rate": 0.6982421875
+  },
+  "1": {
+   "matched": 0,
+   "ukb_cs_variants": 2048,
+   "rate": 0.0
+  }
+ },
+ "hb": {
+  "0": {
+   "matched": 712,
+   "ukb_cs_variants": 1420,
+   "rate": 0.5014084507042254
+  },
+  "1": {
+   "matched": 2,
+   "ukb_cs_variants": 1420,
+   "rate": 0.0014084507042253522
+  }
+ }
+}

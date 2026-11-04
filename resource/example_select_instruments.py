@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 
 gene = sys.argv[1] if len(sys.argv) > 1 else "PCSK9"
-grades = pd.read_csv("C10plus_cis_pqtl_robustness_grades_v2.2.tsv.gz", sep="\t", low_memory=False)
+grades = pd.read_csv("C10plus_cis_pqtl_robustness_grades_v2.3.tsv.gz", sep="\t", low_memory=False)
 
 # 1. All cis credible sets for the target, strongest first
 cs = grades[grades.symbol == gene].assign(abs_beta=lambda d: d.lead_beta.abs())

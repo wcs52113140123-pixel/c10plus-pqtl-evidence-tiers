@@ -1,0 +1,1 @@
+A4 run order: (1) a4_prep_windows.py on workstation (GS entry→gene windows; GRCh38 windows); (2) a4_gs_extract.py locally (HTTP Range + CRC-32, 6–10 workers); (3) hb_one.sh via xargs (remote tabix) + val_one.sh (5-study md5 check); (4) a4_analysis.py offset; (5) a4_analysis.py full (writes results/a4.json, a4_cs_fields.parquet).
