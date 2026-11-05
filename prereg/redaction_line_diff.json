@@ -1,0 +1,87 @@
+{
+ "release": "v1.3.2",
+ "description": "Line-level summary of redactions in the published analysis plans; categories only, removed strings are not reproduced.",
+ "categories_legend": {
+  "machine_alias": "machine name or alias",
+  "ssh_alias": "remote-login (ssh) alias",
+  "linux_username": "Linux user name",
+  "absolute_path": "absolute path on the analysis machine",
+  "execution_environment_term": "name of an execution environment"
+ },
+ "plans": [
+  {
+   "plan": "C10plus_preregistration_v2_frozen.md",
+   "frozen_at": "2026-11-03 11:02:32 UTC",
+   "original_sha256": "126f515f4734baef319629584521bc492e4a70730067f293c76964c2b62a89b0",
+   "redacted_sha256": "f4e33330285ee649c9a8c2c392601dde87a1c9e0a2fd316d49c66c4f0046995e",
+   "n_lines": 121,
+   "lines_changed": 1
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A1_seer_full_frozen.md",
+   "frozen_at": "2026-11-03 12:25:37 UTC",
+   "original_sha256": "6d54bd5478c43184e349523b95c0406ded7bab5e106823e0d7537ad85b2035e2",
+   "redacted_sha256": "ef85628d064be5f4c9c73a625132c6fe2ca89bd33386651ad9b084f7880ad423",
+   "n_lines": 55,
+   "lines_changed": 1
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A2_ARIC_Fenland_frozen.md",
+   "frozen_at": "2026-11-04 04:32:55 UTC",
+   "original_sha256": "08df92f09ddaa5e82e54e87e134cab325dc6d02224b00456dcde6599522cbdb3",
+   "redacted_sha256": "08df92f09ddaa5e82e54e87e134cab325dc6d02224b00456dcde6599522cbdb3",
+   "n_lines": 50,
+   "lines_changed": 0
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A3_practical_impact.md",
+   "frozen_at": "2026-11-04 06:07:53 UTC",
+   "original_sha256": "4a5170ac229e012b253a36046f7163144e0669ec1fec8f66b4e77d81279c3971",
+   "redacted_sha256": "4a5170ac229e012b253a36046f7163144e0669ec1fec8f66b4e77d81279c3971",
+   "n_lines": 60,
+   "lines_changed": 0
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A4_independent_MS.md",
+   "frozen_at": "2026-11-04 06:36:03 UTC",
+   "original_sha256": "cc2da0441cba82e1248ff6c328ac692cc5043fa0b6c133a5eb30f74c01935fd7",
+   "redacted_sha256": "c3578de084c70dc68b679e71352e34467ea3041637f2df57c926cb18f4358df7",
+   "n_lines": 84,
+   "lines_changed": 1
+  }
+ ],
+ "changes": [
+  {
+   "plan": "C10plus_preregistration_v2_frozen.md",
+   "line": 4,
+   "change": "replaced_in_place",
+   "categories": [
+    "absolute_path",
+    "linux_username",
+    "machine_alias"
+   ],
+   "replacement_text_class": "neutral wording (local Linux workstation / rented cloud server / <project_dir>/)"
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A1_seer_full_frozen.md",
+   "line": 18,
+   "change": "replaced_in_place",
+   "categories": [
+    "machine_alias",
+    "ssh_alias"
+   ],
+   "replacement_text_class": "neutral wording (local Linux workstation / rented cloud server / <project_dir>/)"
+  },
+  {
+   "plan": "C10plus_prereg_addendum_A4_independent_MS.md",
+   "line": 34,
+   "change": "replaced_in_place",
+   "categories": [
+    "execution_environment_term",
+    "machine_alias",
+    "ssh_alias"
+   ],
+   "replacement_text_class": "neutral wording (local Linux workstation / rented cloud server / <project_dir>/)"
+  }
+ ]
+}

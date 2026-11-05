@@ -31,7 +31,7 @@ Addendum A4 adds two mass-spectrometry (MS) pQTL truth layers that are sample- a
 - 窗口：同源基因 GRCh38 [start−1 Mb, end+1 Mb]。GS 用 A1 的 hg38ToHg19 转换规则（pyliftover，一端失败时以成功端 ±（基因长度+1 Mb）补齐），两端各放宽 1 kb；HOLBAEK 直接用 GRCh38 窗口。
 - GS：以 HTTP Range 按 ZIP 本地文件头偏移只取所需条目字节（约 210 个条目、约 34 GB），流式解压后只保留窗口内行；全文件不落盘。校验：每个条目流式字节的 CRC-32 与 ZIP 中心目录记录比对（不一致则重取，二次失败记为抽取失败）；记录条目字节 SHA256、输出行数与输出文件 SHA256。若 DataShare 提供整包 MD5，因只取部分字节而无法核对整包，如实声明。
 - HOLBAEK：优先 tabix 远程按窗口查询；随机抽 5 个研究整文件下载，核对 GWAS Catalog md5，并要求整文件按窗口过滤的结果与远程 tabix 结果逐行一致，否则改为整文件下载后过滤。
-- 执行位置：sandbox 本地或 a local Linux workstation；仅在明显更快时用 a rented cloud server（用后清理工作目录、不开放端口）；不使用 another server、another server、another server。
+- 执行位置：本地 Linux 工作站（a local Linux workstation）；仅在明显更快时用租用的云服务器（a rented cloud server；用后清理工作目录、不开放端口）；不使用其他服务器。
 
 ## 4. 坐标与等位基因协调（同 A1）
 - UKB CS 变异（OT qtl_cs_locus，95% CS）：GS 用 GRCh37 坐标（hg38ToHg19 转换，一对多或失败者剔除）；HOLBAEK 用 GRCh38 坐标。

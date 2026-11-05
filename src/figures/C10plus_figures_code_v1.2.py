@@ -266,7 +266,7 @@ def fig3():
     fig.canvas.draw(); save(fig,'Fig3_effect_agreement_sign_reversal'); return fig
 
 
-def fig4():
+def fig4():  # v1.2 Seer-only panel; the published Fig. 4 is figures/Fig4_mass_spec_four_layers.png (all four MS layers)
     fig=plt.figure(figsize=(7.2,5.9))
     # a
     ax=fig.add_axes([0.085,0.62,0.36,0.31]); rows_=[]
@@ -282,7 +282,7 @@ def fig4():
         ax.text(i,0.80,f'OR {H3[f"primary.{k}.OR"]:.2f}\nP = {fmt_p(H3[f"primary.{k}.P"])}',ha='center',fontsize=6)
     ax.set_xticks(range(3)); ax.set_xticklabels([f[1] for f in feats]); ax.tick_params(axis='x',pad=10)
     ax.set_ylim(0,0.92); ax.set_ylabel('MS-supported fraction')
-    ax.set_title('Seer-study MS labels: concordance and anchoring do not track MS support',loc='left',fontsize=8)
+    ax.set_title('MS-supported fraction by concordance, anchoring and PAV status (Seer-study labels; superseded panel)',loc='left',fontsize=8)
     panel_letter(ax,'a',dx=-0.20)
     SRC['Fig4a']=pd.DataFrame(rows_); SRC['Fig4a']['test']='two-sided Fisher exact; n evaluable = 169 CS (concordance: 144 assayed on SomaScan)'
     # b
@@ -341,7 +341,7 @@ def fig4():
     recs.append(dict(endpoint='label agreement kappa',source='MSPA vs Seer full',value='superseded (v0)'))
     panel_letter(ax,'d',dx=-0.03,dy=1.04)
     SRC['Fig4d']=pd.DataFrame(recs)
-    fig.canvas.draw(); save(fig,'Fig4_mass_spec_truth_layer'); return fig
+    fig.canvas.draw(); save(fig,'FigS_v1.2_Seer_MS_layers_superseded'); return fig
 
 
 def fig5():
@@ -676,7 +676,7 @@ def fig1():
 
 
 # --- fig4
-def fig4():
+def fig4():  # v1.2 Seer-only panel; the published Fig. 4 is figures/Fig4_mass_spec_four_layers.png (all four MS layers)
     fig=plt.figure(figsize=(7.2,6.6))
     # a: features x layers
     rows_=[]
@@ -695,7 +695,7 @@ def fig4():
         ax.set_title(lab,loc='left',fontsize=7)
         if li==0: ax.set_ylabel('MS-supported fraction'); panel_letter(ax,'a',dx=-0.30)
         else: ax.set_yticklabels([])
-    fig.text(0.075,0.965,'Under the Seer-study MS labels (MSPA, Seer full), neither concordance nor anchoring tracks MS support; PAV signals are supported less often',fontsize=8)
+    fig.text(0.075,0.965,'MS-supported fraction by feature, Seer-study labels only (MSPA, Seer full); superseded by the four-layer Fig. 4 (figures/Fig4_mass_spec_four_layers.png)',fontsize=8)
     fig.legend(handles=[Patch(color='#555555',label='feature present (coloured)'),Patch(color='#C8C8C8',label='absent')],loc='upper left',bbox_to_anchor=(0.07,0.585),ncol=2,fontsize=6,handlelength=1) if False else None
     SRC['Fig4a']=pd.DataFrame(rows_); SRC['Fig4a']['test']='two-sided Fisher exact; coloured = feature present, grey = absent'
     # b: H3ii groups
@@ -763,7 +763,7 @@ def fig4():
     ax.set_title('PAV signals are less often MS-supported\n(exploratory; both layers from one study)',loc='left',fontsize=7,x=-0.9)
     panel_letter(ax,'d',dx=-0.95,dy=1.13)
     SRC['Fig4d']=pd.DataFrame(rec); SRC['Fig4d']['note']='sample OR with Woolf 95% CI computed for display; P two-sided Fisher exact; MSPA and Seer full derive from the same MS study (label agreement kappa 0.89, n=148)'
-    fig.canvas.draw(); save(fig,'Fig4_mass_spec_truth_layer'); return fig
+    fig.canvas.draw(); save(fig,'FigS_v1.2_Seer_MS_layers_superseded'); return fig
 
 
 # --- fig5
