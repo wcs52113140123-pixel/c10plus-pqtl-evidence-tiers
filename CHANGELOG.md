@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.3 (2026-11-05) — Zenodo doi:10.5281/zenodo.23975177
+- **Redesigned figure set.** `figures/Fig1`–`Fig6` and `figures/supplementary/FigS1`–`FigS8` (PDF and PNG) replace the earlier figures. The v1.2 PNGs and the v1.3.2 four-layer Fig. 4 were removed. `figures/README.md` lists every figure.
+- **Figure code** in `src/figures/v1.3.3/`. `run_all.py` takes input paths from `--config` (see `figure_inputs.example.json`) or from `--workbook`/`--resource`/`--af2`; no paths are hard-coded. `src/figures/C10plus_figures_code_v1.2.py` is marked superseded.
+- **Data values are unchanged.** The resource v2.3 TSV and Parquet are byte-identical to v1.3–v1.3.2. The analysis plans are unchanged from v1.3.2 (redacted copies).
+
 ## v1.3.2 (2026-11-05) — Zenodo doi:10.5281/zenodo.23969253
 - **Computing-infrastructure identifiers removed.** The published analysis plans are now redacted copies. Three lines (plan v2.0, addenda A1 and A4) that named machines, remote-login aliases, a user name or an absolute path now use neutral wording. Scientific content is unchanged: hypotheses, endpoints, thresholds and dates. `prereg/REDACTION_NOTE.md` lists each plan's freeze timestamp, its SHA-256 as recorded at freeze and the SHA-256 of the redacted copy. `prereg/redaction_line_diff.json` summarises the changes by line and category. Unredacted originals are available to editors and reviewers on request.
 - **Fig. 4** replaced by `figures/Fig4_mass_spec_four_layers.png|pdf`, covering all four MS layers (`Fig4_mass_spec_truth_layer.png` removed). The v1.2 figure code no longer writes a Fig. 4 with a conclusion in its title.
