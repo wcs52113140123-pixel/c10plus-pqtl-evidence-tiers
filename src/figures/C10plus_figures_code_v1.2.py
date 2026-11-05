@@ -1,3 +1,4 @@
+# SUPERSEDED (release v1.3.3): replaced by src/figures/v1.3.3/ (run_all.py). Kept for the record; the figures it produced were removed from figures/.
 # Inputs (place under ./inputs/ relative to the working directory; original store-relative names kept):
 #   87fcab6d-.../v944352bd_C10plus_fullscale_results_2026-11-03.xlsx  -> results workbook v3 (Additional file 5 v4 is a superset)
 #   d50db924-.../v055bbf03_C10plus_cis_pqtl_robustness_grades_v2.tsv.gz -> resource table (Additional file 3; v2.2 contains all v2 columns)
