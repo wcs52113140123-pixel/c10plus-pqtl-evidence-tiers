@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.2 (2026-11-05) — Zenodo doi:10.5281/zenodo.23969253
+- **Computing-infrastructure identifiers removed.** The published analysis plans are now redacted copies. Three lines (plan v2.0, addenda A1 and A4) that named machines, remote-login aliases, a user name or an absolute path now use neutral wording. Scientific content is unchanged: hypotheses, endpoints, thresholds and dates. `prereg/REDACTION_NOTE.md` lists each plan's freeze timestamp, its SHA-256 as recorded at freeze and the SHA-256 of the redacted copy. `prereg/redaction_line_diff.json` summarises the changes by line and category. Unredacted originals are available to editors and reviewers on request.
+- **Fig. 4** replaced by `figures/Fig4_mass_spec_four_layers.png|pdf`, covering all four MS layers (`Fig4_mass_spec_truth_layer.png` removed). The v1.2 figure code no longer writes a Fig. 4 with a conclusion in its title.
+- **Data values are unchanged.** The resource v2.3 TSV and Parquet are byte-identical to v1.3 and v1.3.1.
+
 ## v1.3.1 (2026-11-04) — Zenodo doi:10.5281/zenodo.23944552
 - **Correction.** The resource README and both field dictionaries said that platform concordance was not associated with MS support. That held only for the two Seer-study layers (MSPA, Seer full). In the two independent MS cohorts from addendum A4, concordance was positively associated with MS support (Generation Scotland OR 1.86, P = 0.009; HOLBAEK OR 4.67, P = 1.4 × 10⁻⁵; combined OR 2.92). Corrected: `resource/README.md`, `resource/FIELD_DICTIONARY_en.md`, `resource/FIELD_DICTIONARY_zh.md`, the repository README key message, the lookup portal (About) and the Zenodo description. The Fig. 4 heading in the v1.2 figure code is now scoped to the Seer-study layers (`figures/README.md`; PNGs not regenerated).
 - Analysis plan addendum A3 (`prereg/C10plus_prereg_addendum_A3_practical_impact.md` with SHA-256), which the resource README cites, is now included.

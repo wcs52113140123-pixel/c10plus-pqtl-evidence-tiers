@@ -1,7 +1,7 @@
 # C10+ 全量分析预注册（v2.0，冻结版）
 **题目（暂定）**：Cross-platform concordance is not orthogonal validation: transcript-anchored and mass-spectrometry-calibrated grading of plasma cis-pQTLs
 **冻结时间**：2026-11-03 11:02:32 UTC（本文件写定后计算 SHA256；其后任何改动只能以“修订记录”追加，不得修改终点、阈值、检验或分组定义）
-**数据**：thinkstation `/home/weichangsheng/.claude-science-scratch/c10_pqtl/v1`（DuckDB/parquet 23 张表；README v1，2026-11-03）
+**数据**：本地 Linux 工作站（a local Linux workstation）`<project_dir>/v1`（DuckDB/parquet 23 张表；README v1，2026-11-03）
 **随机种子**：20261103（所有抽样、匹配、交叉验证、置换）
 
 ---

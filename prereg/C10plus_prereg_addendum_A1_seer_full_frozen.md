@@ -15,7 +15,7 @@ Addendum A1 extends the mass-spectrometry (MS) truth layer from the Suhre 2025 M
 - 范围：GCST90570713–GCST90572692 全部 1,980 个研究（每个 = 一个 MS 蛋白组 × nanoparticle）。
 - 研究→基因：`protein_id1`（UniProt，取 “;”/“,” 分隔的第一个登录号去异构体后缀）→ Ensembl（OT gene.uniprot_swissprot，再 uniprot_all）；失败则用性状描述首个词作为 symbol 匹配；均失败记为未映射（报告计数）。
 - 抽取窗口：同源基因 GRCh38 [start−1 Mb, end+1 Mb] 用 hg38ToHg19 链（pyliftover）分别转换两端；一端失败时以成功端 ± (基因长度 + 1 Mb) 补齐；两端均失败则不抽取（报告计数）。为对 0/1-based 不确定性留余量，窗口两端各再放宽 1 kb。
-- 抽取在 ssh:us-va 流式完成（curl | gunzip | 窗口过滤 | gzip），只保留窗口内行；全文件不落盘。每个输出记录行数与 SHA256；同时校验 GWAS Catalog md5sum.txt 中的源文件 MD5（对流式读取的字节流计算 MD5）。
+- 抽取在租用的云服务器（a rented cloud server）上流式完成（curl | gunzip | 窗口过滤 | gzip），只保留窗口内行；全文件不落盘。每个输出记录行数与 SHA256；同时校验 GWAS Catalog md5sum.txt 中的源文件 MD5（对流式读取的字节流计算 MD5）。
 
 ## 2. 坐标与等位基因协调
 - UKB cs 变异（OT `qtl_cs_locus`，GRCh38）用 hg38ToHg19 链转换到 GRCh37；一对多或失败者剔除。
