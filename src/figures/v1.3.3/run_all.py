@@ -3,7 +3,7 @@ Inputs: results workbook (Additional file 5, v6), resource v2.3 TSV, Additional 
 Usage: python run_all.py --config figure_inputs.json   (see figure_inputs.example.json), or --workbook/--resource/--af2."""
 import sys, os, re, json, numpy as np, pandas as pd, matplotlib.pyplot as plt, matplotlib as mpl
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
-import common, fig1, fig2, fig3, fig4, fig5, fig6, sfigs_a, sfigs_b
+import common, fig1v3 as fig1, fig2, fig3, fig4, fig5, fig6, sfigs_a, sfigs_b
 def run(WB_PATH,RES_PATH,AF2_PATH):
     WB=pd.read_excel(WB_PATH,sheet_name=None); X=pd.read_excel(AF2_PATH,sheet_name=None)
     R=pd.read_csv(RES_PATH,sep='\t',low_memory=False); R['pav']=R.pav_cognate_cs95_vep116_alltx.astype(float)

@@ -1,4 +1,4 @@
-# Figures (release v1.3.3)
+# Figures (release v1.3.4)
 
 These are the redesigned main and supplementary figures. Each is provided as vector PDF and 300-dpi PNG. They were produced by the code in `src/figures/v1.3.3/`; see its README for inputs and usage.
 
@@ -6,7 +6,7 @@ These are the redesigned main and supplementary figures. Each is provided as vec
 
 | File | Content |
 |---|---|
-| `Fig1.pdf` / `.png` | Study design (a) and all confirmatory endpoints with pre-specified thresholds and verdicts (b). |
+| `Fig1.pdf` / `.png` | Concept schematic (a: abundance effect vs PAV binding artefact; not data), four-step study workflow (b) and all pre-specified endpoints with thresholds and verdicts (c). Drawn by `src/figures/v1.3.3/fig1v3.py`. |
 | `Fig2.pdf` / `.png` | SomaScan replication by PAV and eQTL-anchor group in deCODE and Sun 2018; power matching; anchoring and wrong-gene control. |
 | `Fig3.pdf` / `.png` | Cross-platform effect-size agreement and sign reversal for PAV+ and PAV− pairs, reproduced across the SomaScan v4 cohorts. |
 | `Fig4.pdf` / `.png` | MS support across all four MS layers (MSPA, Seer, Generation Scotland, HOLBAEK): label agreement, concordance, PAV, anchoring, and unanchored-PAV contrasts. |

@@ -3,7 +3,7 @@
 The derived resource (`resource/`), figure source data, results workbooks, analysis-plan documents and figures are released under the **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**, https://creativecommons.org/licenses/by/4.0/.
 Code is released under the MIT License (see `LICENSE`).
 
-Please cite: Ni J, Zhang W, Zhang T. PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project plasma cis-pQTLs: resource, code and analysis plans (v1.3.3). Zenodo; 2026. https://doi.org/10.5281/zenodo.23975177
+Please cite: Ni J, Zhang W, Zhang T. PAV-aware evidence tiers for UK Biobank Pharma Proteomics Project plasma cis-pQTLs: resource, code and analysis plans (v1.3.4). Zenodo; 2026. https://doi.org/10.5281/zenodo.24041516
 
 ## Third-party sources
 Only derived per-credible-set statistics and annotations are released. **No third-party summary-statistic files are redistributed.** The only third-party table rows included are selected columns of Niu et al. 2025 Supplementary Table 4 (CC BY 4.0), listed below. Fields derived from the sources below remain subject to those sources' terms, and users must also cite the original studies.

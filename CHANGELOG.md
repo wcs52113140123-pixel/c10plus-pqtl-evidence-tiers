@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.4 (2026-11-07) — Zenodo doi:10.5281/zenodo.24041516
+- **Fig. 1 redrawn.** New panel a (concept schematic: abundance effect vs PAV binding artefact, with the Olink proximity extension assay, the SomaScan aptamer and peptide-based MS, and genotype mini-plots), panel b (four-step study workflow) and panel c (pre-specified endpoint summary, formerly panel b). Code: `src/figures/v1.3.3/fig1v3.py` with `fig1_icons.py` and `fig1_icons2.py`; `run_all.py` now draws Fig. 1 with `fig1v3`.
+- **Data values are unchanged.** The resource v2.3 TSV and Parquet and the analysis plans (redacted copies) are unchanged from v1.3.3.
+
 ## v1.3.3 (2026-11-05) — Zenodo doi:10.5281/zenodo.23975177
 - **Redesigned figure set.** `figures/Fig1`–`Fig6` and `figures/supplementary/FigS1`–`FigS8` (PDF and PNG) replace the earlier figures. The v1.2 PNGs and the v1.3.2 four-layer Fig. 4 were removed. `figures/README.md` lists every figure.
 - **Figure code** in `src/figures/v1.3.3/`. `run_all.py` takes input paths from `--config` (see `figure_inputs.example.json`) or from `--workbook`/`--resource`/`--af2`; no paths are hard-coded. `src/figures/C10plus_figures_code_v1.2.py` is marked superseded.
